@@ -1,0 +1,1 @@
+// debo definir la paleta de colores del theme provider, y empezar a hacer el navbar
