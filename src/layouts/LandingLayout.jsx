@@ -11,20 +11,16 @@ function LandingLayout({ children }) {
 
   const navLinks = [
     { title: "Inicio", path: "/", icon: <HomeOutlinedIcon /> },
-    { title: "Servicios", path: "/#servicios", icon: <PetsOutlinedIcon /> },
-    { title: "Nosotros", path: "/#nosotros", icon: <Groups2OutlinedIcon /> },
-    { title: "Contacto", path: "/#contacto", icon: <CallOutlinedIcon /> },
+    { title: "Servicios", path: "#servicios", icon: <PetsOutlinedIcon /> },
+    { title: "Nosotros", path: "#nosotros", icon: <Groups2OutlinedIcon /> },
+    { title: "Contacto", path: "#contacto", icon: <CallOutlinedIcon /> },
     { title: "Blog", path: "/blog", icon: <MenuBookOutlinedIcon /> },
   ]
 
   return (
     <>
       <NavBar navLinks={navLinks} />
-      <Container maxWidth="lg">
-        <Box component="main" sx={{ py: 4 }}>
-          {children}
-        </Box>
-      </Container>
+      {children}
       <Footer />
     </>
   )

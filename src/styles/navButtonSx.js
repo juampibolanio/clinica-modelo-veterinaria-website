@@ -14,7 +14,7 @@ export const navButtonSx = {
         bottom: 0,
         height: 2,
         width: 0,
-        backgroundColor: "primary.main",
+        backgroundColor: "background.default",
         transition: "width 0.3s ease",
     },
     "&:hover::after": {
