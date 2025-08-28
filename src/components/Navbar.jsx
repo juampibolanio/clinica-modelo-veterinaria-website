@@ -1,10 +1,10 @@
 import { AppBar, Box, Button, Drawer, IconButton, Toolbar, Typography } from "@mui/material";
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
-import { navButtonSx } from "../styles/navButtonSx";
 import icon from "../assets/favicon.png";
 import MenuIcon from "@mui/icons-material/Menu";
 import NavListDrawer from "./NavListDrawer";
+import { AppBarSx, DesktopLinksContainerSx, LogoSx, Title1Sx, Title2Sx, ToolBarSx, NavButtonSx, MobileBurguerMenuSx } from "../styles/NavBars/NavBarSx";
 
 export default function NavBar({ navLinks }) {
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -12,6 +12,7 @@ export default function NavBar({ navLinks }) {
   const handleDrawerToggle = () => setDrawerOpen(!drawerOpen);
   const handleDrawerClose = () => setDrawerOpen(false);
 
+  // Handler click for Scroll with Smooth
   const handleNavClick = (path, e) => {
     if (path.startsWith("#")) {
       e?.preventDefault();
@@ -25,25 +26,20 @@ export default function NavBar({ navLinks }) {
   };
 
   return (
-    <AppBar
-      position="sticky"
-      sx={{
-        background: "linear-gradient(90deg, #5A9EF0 50%, #7027A0 100%)",
-        boxShadow: "0 4px 10px rgba(0,0,0,0.1)",
-      }}
-    >
-      <Toolbar sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", color: "#fff" }}>
-        {/* -------------------------------- Logo y nombre -------------------------------- */}
+    <AppBar position="sticky" sx={AppBarSx} >
+      <Toolbar sx={ToolBarSx}>
+
+        {/* ----- Title and Logo ----- */}
         <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-          <Box component="img" src={icon} alt="Clínica Modelo Veterinaria Logo" sx={{ width: 80, height: 70 }} />
+          <Box component="img" src={icon} alt="Clínica Modelo Veterinaria Logo" sx={LogoSx} />
           <Box>
-            <Typography variant="h6" sx={{ fontFamily: "Nunito", fontWeight: 700 }}>Clínica Modelo</Typography>
-            <Typography variant="body2" sx={{ fontFamily: "Nunito", opacity: 0.9 }}>Veterinaria</Typography>
+            <Typography variant="h6" sx={Title1Sx}>Clínica Modelo</Typography>
+            <Typography variant="body2" sx={Title2Sx}>Veterinaria</Typography>
           </Box>
         </Box>
 
-        {/*-------------------------------- Links desktop --------------------------------*/}
-        <Box sx={{ display: { xs: "none", md: "flex" }, gap: 2, ml: "auto" }}>
+        {/*----- Desktop Links ------*/}
+        <Box sx={DesktopLinksContainerSx}>
           {navLinks.map(link =>
             link.path.startsWith("#") ? (
               <Button
@@ -53,7 +49,7 @@ export default function NavBar({ navLinks }) {
                 startIcon={link.icon}
                 disableElevation
                 disableRipple
-                sx={{ ...navButtonSx, color: "#fff" }}
+                sx={{ ...NavButtonSx, color: "#fff" }}
                 onClick={(e) => handleNavClick(link.path, e)}
               >
                 {link.title}
@@ -66,7 +62,7 @@ export default function NavBar({ navLinks }) {
                 startIcon={link.icon}
                 disableElevation
                 disableRipple
-                sx={{ ...navButtonSx, color: "#fff" }}
+                sx={{ ...NavButtonSx, color: "#fff" }}
               >
                 {link.title}
               </Button>
@@ -74,12 +70,8 @@ export default function NavBar({ navLinks }) {
           )}
         </Box>
 
-        {/*-------------------------------- Versión móvil --------------------------------*/}
-        <IconButton
-          size="large"
-          onClick={handleDrawerToggle}
-          sx={{ display: { xs: "flex", md: "none" }, color: "#fff" }}
-        >
+        {/*------ Mobile Links ---------*/}
+        <IconButton size="large" onClick={handleDrawerToggle} sx={MobileBurguerMenuSx}>
           <MenuIcon />
         </IconButton>
         <Drawer
@@ -87,11 +79,7 @@ export default function NavBar({ navLinks }) {
           open={drawerOpen}
           onClose={handleDrawerClose}
           PaperProps={{
-            sx: {
-              background: "linear-gradient(180deg, #3781E3 0%, #7027A0 100%)",
-              color: "#fff",
-              width: 250,
-            },
+            sx: { background: "linear-gradient(180deg, #3781E3 0%, #7027A0 100%)", color: "#fff", width: 250,},
           }}
         >
           <NavListDrawer navLinks={navLinks} handleDrawerOpen={handleNavClick} />
