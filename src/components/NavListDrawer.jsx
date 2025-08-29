@@ -1,10 +1,11 @@
 import { List, ListItem, ListItemButton, ListItemIcon, ListItemText, Box, Typography, Divider } from "@mui/material";
 import { NavLink } from "react-router-dom";
 import icon from "../assets/favicon.png"; 
+import { LogoSx, MainContainerSx, TitleLogoContainerSx, TitleSx } from "../styles/NavBars/NavListDrawerSx";
 
 export default function NavListDrawer({ navLinks, handleDrawerOpen }) {
 
-    // Manejar desplazamiento al hacer click.
+    // Handler click for Scroll with Smooth
     const handleClick = (path, e) => {
         if (path.startsWith("#")) {
             e?.preventDefault();
@@ -18,22 +19,23 @@ export default function NavListDrawer({ navLinks, handleDrawerOpen }) {
     };
 
     return (
-        <Box sx={{ width: 250 }}>
-            {/*-------------------------------- Logo y nombre --------------------------------*/}
-            <Box sx={{ display: "flex", alignItems: "center", p: 2 }}>
+        <Box sx={MainContainerSx}>
+
+            {/*------ Title and Logo -----*/}
+            <Box sx={TitleLogoContainerSx}>
                 <Box
                     component="img"
                     src={icon}
                     alt="Clínica Modelo Veterinaria Logo"
-                    sx={{ width: 80, height: 80, mr: 1 }}
+                    sx={LogoSx}
                 />
-                <Typography variant="h6" sx={{ fontFamily: "Nunito", color: "background.paper", fontSize: 16 }}>
+                <Typography variant="h6" sx={TitleSx}>
                     Menú
                 </Typography>
             </Box>
             <Divider />
 
-            {/*-------------------------------- Lista de links --------------------------------*/}
+            {/*----- Links List -----*/}
             <List>
                 {navLinks.map((item) => (
                     <ListItem disablePadding key={item.title}>

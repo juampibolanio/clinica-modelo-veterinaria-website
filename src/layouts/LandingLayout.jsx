@@ -1,5 +1,4 @@
-import NavBar from '../components/NavBar'
-import { Box, Container } from '@mui/material'
+import NavBar from '../components/Navbar'
 import Footer from '../components/Footer'
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import MenuBookOutlinedIcon from '@mui/icons-material/MenuBookOutlined';
@@ -12,7 +11,7 @@ function LandingLayout({ children }) {
   const navLinks = [
     { title: "Inicio", path: "/", icon: <HomeOutlinedIcon /> },
     { title: "Servicios", path: "#servicios", icon: <PetsOutlinedIcon /> },
-    { title: "Nosotros", path: "#nosotros", icon: <Groups2OutlinedIcon /> },
+    { title: "Nosotros", path: "#equipo", icon: <Groups2OutlinedIcon /> },
     { title: "Contacto", path: "#contacto", icon: <CallOutlinedIcon /> },
     { title: "Blog", path: "/blog", icon: <MenuBookOutlinedIcon /> },
   ]
