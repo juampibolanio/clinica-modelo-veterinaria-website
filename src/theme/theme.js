@@ -26,6 +26,9 @@ export const theme = createTheme({
         warning: {
             main: '#f59e0b',
         },
+        text: {
+            primary: '#808080'
+        },
         typography: {
             fontFamily: "Nunito, Arial, sans-serif",
             fontWeightLight: 300,
