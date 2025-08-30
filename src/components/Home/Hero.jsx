@@ -65,7 +65,7 @@ export default function Hero() {
 
                         <Typography variant="h5" sx={SubtitleSx(theme)}>
                             Cuidado profesional y compasivo para tus mascotas.
-                            Más de 15 años brindando salud y bienestar animal.
+                            Brindando salud y bienestar animal.
                         </Typography>
 
                     </Box>

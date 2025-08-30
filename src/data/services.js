@@ -6,23 +6,23 @@ import ContentCutIcon from '@mui/icons-material/ContentCut';
 
 export const services = [
     {
-        title: "Consultas Veterinarias",
-        description: "Revisiones completas para mantener a tus mascotas saludables y felices.",
+        title: "Clínica Veterinaria",
+        description: "Atendemos a perros y gatos con diagnóstico clínico integral, cubriendo todas las necesidades de salud de tu mascota.",
         icon: LocalHospitalIcon,
     },
     {
-        title: "Vacunación y Desparasitación",
-        description: "Protegemos a tus mascotas con vacunas y tratamientos preventivos de calidad.",
+        title: "Especialidades Médicas",
+        description: "Contamos con médicos veterinarios especialistas en distintas áreas, garantizando cuidado completo y seguro para tu mascota.",
         icon: HealthAndSafetyIcon,
     },
     {
-        title: "Cirugías Especializadas",
-        description: "Contamos con procedimientos quirúrgicos seguros y profesionales.",
+        title: "Procedimientos Diagnósticos",
+        description: "Realizamos análisis clínicos, electrocardiogramas y estudios citológicos para un diagnóstico preciso y confiable.",
         icon: PetsIcon,
     },
     {
-        title: "Estética y Cuidado",
-        description: "Baños, cortes y cuidados especiales para el bienestar de tus mascotas.",
+        title: "Nutrición y Bienestar",
+        description: "Ofrecemos asesoramiento nutricional y cuidados especiales, asegurando la salud y bienestar de tus mascotas a largo plazo.",
         icon: ContentCutIcon,
     },
 ];

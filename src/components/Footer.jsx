@@ -8,6 +8,7 @@ import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import PetsIcon from "@mui/icons-material/Pets";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import logo from '../assets/favicon.png';
+import { BottomCircleSx, BottomSectionSx, BottomTextSx, ClinicNameSx, ClinicSubtitleSx, CompanyDescSx, CompanyInfoAnimSx, ContactCardSx, ContactIconSx, ContactInfoAnimSx, ContactTextSx, ContactTitleSx, DividerSx, FooterContainerSx, FooterRootSx, HeartIconSx, LogoBoxSx, MadeWithBoxSx, PawIconSx, PawPrintSx, SectionTitleSx, ServiceLinkSx, ServicesAnimSx, SocialButtonSx, TopCircleSx } from '../styles/NavBars/FooterSx';
 
 function Footer() {
   const currentYear = new Date().getFullYear();
@@ -15,85 +16,36 @@ function Footer() {
   return (
     <Box
       component="footer"
-      sx={{
-        position: "relative",
-        width: "100%",
-        background: "linear-gradient(135deg, #1a202c 0%, #2d3748 50%, #1a202c 100%)",
-        color: "white",
-        overflow: "hidden",
-        mt: "auto",
-      }}
+      sx={FooterRootSx}
     >
       {/* Floating decorative elements */}
       <Box
-        sx={{
-          position: "absolute",
-          top: "-100px",
-          right: "-100px",
-          width: "300px",
-          height: "300px",
-          borderRadius: "50%",
-          background: "linear-gradient(135deg, rgba(112, 39, 160, 0.1), rgba(55, 129, 227, 0.1))",
-          animation: "float 8s ease-in-out infinite",
-          zIndex: 1,
-        }}
+        sx={TopCircleSx}
       />
 
       <Box
-        sx={{
-          position: "absolute",
-          bottom: "-50px",
-          left: "-50px",
-          width: "200px",
-          height: "200px",
-          borderRadius: "50%",
-          background: "linear-gradient(45deg, rgba(55, 129, 227, 0.08), rgba(112, 39, 160, 0.08))",
-          animation: "float 10s ease-in-out infinite reverse",
-          zIndex: 1,
-        }}
+        sx={BottomCircleSx}
       />
 
       {/* Decorative paw prints */}
       {[...Array(6)].map((_, index) => (
         <Box
           key={index}
-          sx={{
-            position: "absolute",
-            fontSize: "20px",
-            opacity: 0.05,
-            transform: `rotate(${index * 60}deg)`,
-            top: `${10 + index * 15}%`,
-            right: `${5 + index * 10}%`,
-            animation: `pawFloat ${4 + index}s ease-in-out infinite`,
-            zIndex: 1,
-            "&::before": {
-              content: '"🐾"',
-            }
-          }}
+          sx={PawPrintSx(index)}
         />
       ))}
 
       {/* Main Footer Content */}
       <Container
         maxWidth="lg"
-        sx={{
-          position: "relative",
-          zIndex: 2,
-          py: { xs: 6, md: 8 }
-        }}
+        sx={FooterContainerSx}
       >
         {/* Top Section */}
         <Grid container spacing={4}>
           {/* Company Info */}
           <Grid item xs={12} md={4}>
             <Box
-              sx={{
-                animation: "slideInLeft 0.8s ease-out",
-                "@keyframes slideInLeft": {
-                  "0%": { opacity: 0, transform: "translateX(-50px)" },
-                  "100%": { opacity: 1, transform: "translateX(0)" }
-                }
-              }}
+              sx={CompanyInfoAnimSx}
             >
               {/* Logo and Veterinary Name */}
               <Box
@@ -106,20 +58,7 @@ function Footer() {
               >
                 {/* Logo placeholder  */}
                 <Box
-                  sx={{
-                    width: 60,
-                    height: 60,
-                    borderRadius: 3,
-                    background: "transparent",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    fontSize: "24px",
-                    "&:hover": {
-                      transform: "scale(1.1)",
-                      transition: "transform 0.3s ease",
-                    }
-                  }}
+                  sx={LogoBoxSx}
                 >
                   <Box
                     component="img"
@@ -135,24 +74,13 @@ function Footer() {
                 <Box>
                   <Typography
                     variant="h5"
-                    sx={{
-                      fontWeight: 700,
-                      fontFamily: "Nunito",
-                      background: "linear-gradient(135deg, #3781E3, #7027A0)",
-                      backgroundClip: "text",
-                      WebkitBackgroundClip: "text",
-                      WebkitTextFillColor: "transparent",
-                      filter: "drop-shadow(0 2px 4px rgba(0,0,0,0.3))",
-                    }}
+                    sx={ClinicNameSx}
                   >
                     Clínica Modelo Veterinaria
                   </Typography>
                   <Typography
                     variant="body2"
-                    sx={{
-                      color: "rgba(255,255,255,0.7)",
-                      fontFamily: "Nunito"
-                    }}
+                    sx={ClinicSubtitleSx}
                   >
                     Cuidando a tus mascotas 
                   </Typography>
@@ -160,12 +88,7 @@ function Footer() {
               </Box>
 
               <Typography
-                sx={{
-                  color: "rgba(255,255,255,0.8)",
-                  lineHeight: 1.7,
-                  fontFamily: "Nunito",
-                  mb: 3,
-                }}
+                sx={CompanyDescSx}
               >
                 Brindamos atención veterinaria integral con los más altos estándares
                 de calidad y dedicación. Tu mascota merece el mejor cuidado profesional.
@@ -183,21 +106,7 @@ function Footer() {
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    sx={{
-                      width: 45,
-                      height: 45,
-                      background: "rgba(255,255,255,0.1)",
-                      backdropFilter: "blur(10px)",
-                      border: "1px solid rgba(255,255,255,0.2)",
-                      color: "white",
-                      transition: "all 0.3s ease",
-                      animation: `socialFloat ${3 + index * 0.5}s ease-in-out infinite`,
-                      "&:hover": {
-                        background: social.color,
-                        transform: "translateY(-5px) scale(1.1)",
-                        boxShadow: `0 10px 20px ${social.color}40`,
-                      }
-                    }}
+                    sx={SocialButtonSx(social.color, index)}
                   >
                     {social.icon}
                   </IconButton>
@@ -209,33 +118,11 @@ function Footer() {
           {/* Contact Info */}
           <Grid item xs={12} md={4}>
             <Box
-              sx={{
-                animation: "slideInUp 0.8s ease-out 0.2s both",
-                "@keyframes slideInUp": {
-                  "0%": { opacity: 0, transform: "translateY(50px)" },
-                  "100%": { opacity: 1, transform: "translateY(0)" }
-                }
-              }}
+              sx={ContactInfoAnimSx}
             >
               <Typography
                 variant="h6"
-                sx={{
-                  fontWeight: 700,
-                  fontFamily: "Nunito",
-                  mb: 3,
-                  color: "white",
-                  position: "relative",
-                  "&::after": {
-                    content: '""',
-                    position: "absolute",
-                    bottom: "-8px",
-                    left: 0,
-                    width: "50px",
-                    height: "3px",
-                    background: "linear-gradient(90deg, #3781E3, #7027A0)",
-                    borderRadius: "2px",
-                  }
-                }}
+                sx={SectionTitleSx}
               >
                 Información de Contacto
               </Typography>
@@ -269,54 +156,23 @@ function Footer() {
                 ].map((item, index) => (
                   <Box
                     key={index}
-                    sx={{
-                      display: "flex",
-                      alignItems: "flex-start",
-                      gap: 2,
-                      p: 2,
-                      borderRadius: 3,
-                      background: "rgba(255,255,255,0.05)",
-                      backdropFilter: "blur(10px)",
-                      border: "1px solid rgba(255,255,255,0.1)",
-                      transition: "all 0.3s ease",
-                      "&:hover": {
-                        background: "rgba(255,255,255,0.1)",
-                        transform: "translateX(10px)",
-                        borderColor: item.color + "40",
-                      }
-                    }}
+                    sx={ContactCardSx(item.color)}
                   >
                     <Box
-                      sx={{
-                        color: item.color,
-                        mt: 0.2,
-                        p: 1,
-                        borderRadius: 2,
-                        background: `${item.color}20`,
-                      }}
+                      sx={ContactIconSx(item.color)}
                     >
                       {item.icon}
                     </Box>
                     <Box>
                       <Typography
                         variant="subtitle2"
-                        sx={{
-                          fontWeight: 600,
-                          color: "white",
-                          mb: 0.5,
-                          fontFamily: "Nunito"
-                        }}
+                        sx={ContactTitleSx}
                       >
                         {item.title}
                       </Typography>
                       <Typography
                         variant="body2"
-                        sx={{
-                          color: "rgba(255,255,255,0.7)",
-                          whiteSpace: "pre-line",
-                          lineHeight: 1.5,
-                          fontFamily: "Nunito"
-                        }}
+                        sx={ContactTextSx}
                       >
                         {item.content}
                       </Typography>
@@ -330,33 +186,11 @@ function Footer() {
           {/* Services & Quick Links */}
           <Grid item xs={12} md={4}>
             <Box
-              sx={{
-                animation: "slideInRight 0.8s ease-out 0.4s both",
-                "@keyframes slideInRight": {
-                  "0%": { opacity: 0, transform: "translateX(50px)" },
-                  "100%": { opacity: 1, transform: "translateX(0)" }
-                }
-              }}
+              sx={ServicesAnimSx}
             >
               <Typography
                 variant="h6"
-                sx={{
-                  fontWeight: 700,
-                  fontFamily: "Nunito",
-                  mb: 3,
-                  color: "white",
-                  position: "relative",
-                  "&::after": {
-                    content: '""',
-                    position: "absolute",
-                    bottom: "-8px",
-                    left: 0,
-                    width: "50px",
-                    height: "3px",
-                    background: "linear-gradient(90deg, #3781E3, #7027A0)",
-                    borderRadius: "2px",
-                  }
-                }}
+                sx={SectionTitleSx}
               >
                 Nuestros Servicios
               </Typography>
@@ -373,33 +207,7 @@ function Footer() {
                     key={index}
                     component="a"
                     href="#servicios"
-                    sx={{
-                      color: "rgba(255,255,255,0.8)",
-                      textDecoration: "none",
-                      fontFamily: "Nunito",
-                      fontSize: "0.9rem",
-                      display: "flex",
-                      alignItems: "center",
-                      gap: 1,
-                      py: 0.5,
-                      px: 1,
-                      borderRadius: 2,
-                      transition: "all 0.3s ease",
-                      cursor: "pointer",
-                      "&:hover": {
-                        color: "#3781E3",
-                        background: "rgba(55, 129, 227, 0.1)",
-                        transform: "translateX(5px)",
-                        "&::before": {
-                          transform: "translateX(5px)",
-                        }
-                      },
-                      "&::before": {
-                        content: '"🐾"',
-                        fontSize: "12px",
-                        transition: "transform 0.3s ease",
-                      }
-                    }}
+                    sx={ServiceLinkSx}
                   >
                     {service}
                   </Typography>
@@ -411,77 +219,34 @@ function Footer() {
 
         {/* Divider with animation */}
         <Divider
-          sx={{
-            my: 4,
-            background: "linear-gradient(90deg, transparent, rgba(55, 129, 227, 0.5), transparent)",
-            height: "2px",
-            border: "none",
-            animation: "dividerGlow 3s ease-in-out infinite",
-            "@keyframes dividerGlow": {
-              "0%, 100%": { opacity: 0.3 },
-              "50%": { opacity: 0.8 }
-            }
-          }}
+          sx={DividerSx}
         />
 
         {/* Bottom Section */}
         <Box
-          sx={{
-            display: "flex",
-            flexDirection: { xs: "column", md: "row" },
-            justifyContent: "space-between",
-            alignItems: "center",
-            gap: 2,
-            animation: "fadeIn 1s ease-out 0.8s both",
-            "@keyframes fadeIn": {
-              "0%": { opacity: 0 },
-              "100%": { opacity: 1 }
-            }
-          }}
+          sx={BottomSectionSx}
         >
           <Typography
             variant="body2"
-            sx={{
-              color: "rgba(255,255,255,0.6)",
-              textAlign: { xs: "center", md: "left" },
-              fontFamily: "Nunito"
-            }}
+            sx={BottomTextSx}
           >
             © {currentYear} Veterinaria Modelo. Todos los derechos reservados.
           </Typography>
 
           <Box
-            sx={{
-              display: "flex",
-              alignItems: "center",
-              gap: 1,
-              color: "rgba(255,255,255,0.7)",
-              fontFamily: "Nunito"
-            }}
+            sx={MadeWithBoxSx}
           >
             <Typography variant="body2">
               Hecho con
             </Typography>
             <FavoriteIcon
-              sx={{
-                color: "#ff6b6b",
-                fontSize: 16,
-                animation: "heartbeat 1.5s ease-in-out infinite",
-                "@keyframes heartbeat": {
-                  "0%, 50%, 100%": { transform: "scale(1)" },
-                  "25%, 75%": { transform: "scale(1.1)" }
-                }
-              }}
+              sx={HeartIconSx}
             />
             <Typography variant="body2">
               para el cuidado animal
             </Typography>
             <PetsIcon
-              sx={{
-                color: "#3781E3",
-                fontSize: 18,
-                ml: 1
-              }}
+              sx={PawIconSx}
             />
           </Box>
         </Box>
