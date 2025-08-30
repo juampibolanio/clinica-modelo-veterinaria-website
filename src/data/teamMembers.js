@@ -31,21 +31,21 @@ export const teamMembers = [
     },
     {
         name: "Marcelo",
-        surname: "Dr. Campo",
+        surname: "Dr. Ocampo",
         photo: "https://via.placeholder.com/150",
         title: "Médico Veterinario",
         specialty: "Clínica e Histopatología",
-        license: "M.P N° XXXXX",
+        license: "M.P N° 1221",
         description:
             "Se especializa en anatomo-histopatología y citología, además de clínica general, manejando análisis citológicos de mascotas.",
     },
     {
-        name: "Janina",
+        name: "Yanina",
         surname: "Esp. Brites",
         photo: "https://via.placeholder.com/150",
         title: "Médica Veterinaria",
         specialty: "Clínica y Cardiología",
-        license: "M.P N° XXXXX",
+        license: "M.P N° 1059",
         description:
             "Especialista en cardiología veterinaria, realiza electrocardiogramas y seguimiento cardiológico de perros y gatos.",
     },
@@ -55,7 +55,7 @@ export const teamMembers = [
         photo: "https://via.placeholder.com/150",
         title: "Médica Veterinaria",
         specialty: "Clínica y Nutrición",
-        license: "M.P N° XXXXX",
+        license: "M.P N° 1298",
         description:
             "Se especializa en nutrición de mascotas, colaborando en dietas y planes alimenticios personalizados para perros y gatos.",
     },

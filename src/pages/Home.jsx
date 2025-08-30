@@ -21,18 +21,37 @@ import {
   TitleServicesSx,
   DescriptionServicesSx,
   SectionLineSx,
-  TeamSectionSx,
   TeamHeaderSx,
   TeamTextColumnSx,
   TeamGridSx,
   PlaceholderImageSx,
-  TeamBackgroundSx,
-  TeamOverlaySx,
-  TeamGradientSx
+  TeamGradientSx,
+  TeamTextTitleSx,
+  TeamTextDescriptionSx,
+  MainHomeContainerSx,
+  TeamSectionSx,
+  ContactSectionSx,
+  ContactCircleTopRightSx,
+  ContactCircleBottomLeftSx,
+  ContactPawPrintSx,
+  ContactHeaderSx,
+  ContactHeaderTitleSx,
+  ContactHeaderDescriptionSx,
+  ContactMainContentSx,
+  ContactInfoListSx,
+  ContactIconBoxSx,
+  ContactInfoCardSx,
+  ContactMapSectionSx,
+  ContactMapBoxSx,
+  ContactMapLoadingSx,
+  ContactMapOverlaySx,
+  ContactFabSx,
+  ContactGoogleMapsButtonSx
 } from '../styles/Home/HomeSx';
+import { ServicesGridSx } from '../styles/Home/ServiceCardSx';
+import { contactInformation } from '../data/contactInformation';
 
 function Home() {
-
   const theme = useTheme();
 
   return (
@@ -40,15 +59,7 @@ function Home() {
       {/*--- Hero ---*/}
       <Hero />
 
-      <Box
-        sx={{
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          alignItems: 'center',
-          width: '100%',
-        }}
-      >
+      <Box id="inicio" sx={MainHomeContainerSx}>
         {/*----- Services Section ----*/}
         <Box id="servicios" sx={ServicesContainerSx()}>
           {/* Collage Photos */}
@@ -70,14 +81,14 @@ function Home() {
               Nuestros Servicios
             </Typography>
 
-            <Box sx={SectionLineSx()} />
-
             <Typography variant="body1" sx={DescriptionServicesSx()}>
-              Brindamos servicios de alta calidad para cuidar y proteger a tus mascotas. Nuestro equipo profesional asegura atención personalizada para cada necesidad.
+              Brindamos servicios de alta calidad para cuidar y proteger a tus
+              mascotas. Nuestro equipo profesional asegura atención
+              personalizada para cada necesidad.
             </Typography>
 
-            <Grid container spacing={3} justifyContent="center">
-              {services.map((service) => {
+            <Grid container spacing={2} justifyContent="center" sx={ServicesGridSx}>
+              {services.map((service, index) => {
                 const IconComponent = service.icon;
                 return (
                   <Grid item xs={12} sm={6} key={service.title}>
@@ -85,6 +96,7 @@ function Home() {
                       title={service.title}
                       description={service.description}
                       icon={<IconComponent />}
+                      index={index}
                     />
                   </Grid>
                 );
@@ -94,58 +106,36 @@ function Home() {
         </Box>
 
         {/*----- Veterinary Team Section -----*/}
-        <Box id="equipo" sx={TeamSectionSx()}>
-          {/* Background Image */}
-          <Box sx={TeamBackgroundSx(dog3)} />
-
-          {/* Overlay color */}
-          <Box sx={TeamOverlaySx()} />
-
-          {/* Gradient tipo Hero */}
-          <Box sx={TeamGradientSx(theme)} />
+        <Box id="equipo" sx={TeamSectionSx}>
+          {/* Gradient superior/inferior */}
           <Box sx={TeamGradientSx(theme)} />
 
           {/* Content */}
-          <Box sx={{ position: "relative", zIndex: 4, width: "100%" }}>
-            {/* Header: Texto + Logo */}
+          <Box sx={{ position: 'relative', zIndex: 4, width: '100%' }}>
+            {/* Header: Text + Logo */}
             <Box sx={TeamHeaderSx()}>
               {/* Left Column: Text */}
               <Box sx={TeamTextColumnSx()}>
-                <Typography
-                  variant="h4"
-                  sx={{
-                    fontWeight: 700,
-                    mb: 1,
-                    fontFamily: "Nunito",
-                    fontSize: { xs: "1.8rem", md: "2.5rem" },
-                    color: "background.default"
-                  }}
-                >
+                <Typography variant="h4" sx={TeamTextTitleSx}>
                   Nuestro Equipo Veterinario
                 </Typography>
 
-                <Box
-                  sx={{
-                    background: "linear-gradient(90deg, #7027A0, #3781E3)",
-                    mb: 2,
-                    borderRadius: 2,
-                  }}
-                />
+                <Box sx={SectionLineSx()} />
 
-                <Typography
-                  variant="body1"
-                  sx={{
-                    lineHeight: 1.6,
-                    fontSize: { xs: "0.9rem", md: "1rem" },
-                    color: "background.default",
-                  }}
-                >
-                  Contamos con profesionales altamente capacitados en distintas especialidades, brindando atención integral y de excelencia para el cuidado de tus mascotas.
+                <Typography variant="body1" sx={TeamTextDescriptionSx}>
+                  Contamos con profesionales altamente capacitados en distintas
+                  especialidades, brindando atención integral y de excelencia para el
+                  cuidado de tus mascotas.
                 </Typography>
               </Box>
 
               {/* Right Column: Logo */}
-              <Box component="img" src={logo} alt="Logo de la clínica" sx={{ ...PlaceholderImageSx(), objectFit: "cover" }} />
+              <Box
+                component="img"
+                src={logo}
+                alt="Logo de la clínica"
+                sx={{ ...PlaceholderImageSx(), objectFit: 'cover' }}
+              />
             </Box>
 
             {/* Team Cards */}
@@ -159,17 +149,156 @@ function Home() {
                     specialty={member.specialty}
                     license={member.license}
                     theme={theme}
+                    index={index}
                   />
                 </Grid>
               ))}
             </Grid>
           </Box>
         </Box>
+        {/*----- End Veterinary Team Section -----*/}
 
+        {/*----- Veterinary Contact Section -----*/}
+        <Box id="contacto" sx={ContactSectionSx}>
+          {/* Decorative Background Elements */}
+          <Box sx={ContactCircleTopRightSx} />
+          <Box sx={ContactCircleBottomLeftSx} />
 
+          {/* Paw Print Decorations */}
+          {[...Array(4)].map((_, index) => (
+            <Box key={index} sx={ContactPawPrintSx} />
+          ))}
+
+          {/* Content Container */}
+          <Box sx={{ position: 'relative', zIndex: 2 }}>
+            {/* Header Section */}
+            <Box sx={ContactHeaderSx}>
+              <Typography variant="h3" sx={ContactHeaderTitleSx}>
+                Contactanos
+              </Typography>
+
+              <Typography sx={ContactHeaderDescriptionSx}>
+                Estamos aquí para ayudarte. Comunicate con nosotros por cualquiera
+                de estos medios o visitanos en nuestra clínica veterinaria.
+              </Typography>
+            </Box>
+
+            {/* Main Content Grid */}
+            <Box sx={ContactMainContentSx}>
+              {/* Contact Information Cards */}
+              <Box sx={ContactInfoListSx}>
+                {contactInformation.map((item, index) => {
+                  const Icon = item.icon; 
+                  return (
+                    <Box
+                      key={index}
+                      sx={ContactInfoCardSx(item.color, item.delay)}
+                    >
+                      <Box
+                        className="contact-icon"
+                        sx={ContactIconBoxSx(item.color)}
+                      >
+                        <Icon /> 
+                      </Box>
+                      <Box sx={{ flex: 1 }}>
+                        <Typography
+                          variant="h6"
+                          sx={{
+                            fontWeight: 700,
+                            color: 'primary.main',
+                            mb: 1,
+                            fontSize: { xs: '1.1rem', md: '1.25rem' },
+                          }}
+                        >
+                          {item.title}
+                        </Typography>
+                        <Typography
+                          sx={{
+                            color: 'text.secondary',
+                            whiteSpace: 'pre-line',
+                            lineHeight: 1.6,
+                            fontSize: { xs: '0.95rem', md: '1rem' },
+                          }}
+                        >
+                          {item.description}
+                        </Typography>
+                      </Box>
+                    </Box>
+                  );
+                })}
+
+                {/* Button see in google maps (for the button position) */}
+                <Box
+                  sx={{
+                    mt: 2,
+                    p: 3,
+                    borderRadius: 3,
+                  }}
+                ></Box>
+              </Box>
+
+              {/* Map Section */}
+              <Box sx={ContactMapSectionSx}>
+                <Box sx={ContactMapBoxSx}>
+                  {/* Map Loading Placeholder */}
+                  <Box sx={ContactMapLoadingSx}>
+                    <Typography sx={{ color: 'text.secondary' }}>
+                      Cargando mapa...
+                    </Typography>
+                  </Box>
+
+                  <iframe
+                    title="Ubicación Veterinaria Modelo"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d442.4899346493554!2d-59.00065067031256!3d-27.47176612244084!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94450cbd55ea75a7%3A0x8883f7bd888f4a10!2sVeterinaria%20Cl%C3%ADnica%20Modelo!5e0!3m2!1ses-419!2sar!4v1756475370113!5m2!1ses-419!2sar"
+                    width="100%"
+                    height="100%"
+                    style={{
+                      border: 'none',
+                      position: 'relative',
+                      zIndex: 2,
+                    }}
+                    allowFullScreen
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                  />
+
+                  {/* Map Overlay Info */}
+                  <Box sx={ContactMapOverlaySx}>
+                    <Typography
+                      variant="subtitle2"
+                      sx={{ fontWeight: 600, color: 'primary.main' }}
+                    >
+                      📍 Veterinaria Clínica Modelo
+                    </Typography>
+                    <Typography
+                      variant="body2"
+                      sx={{ color: 'text.secondary', mt: 0.5 }}
+                    >
+                      Av. San Martín 2055, Resistencia, Chaco
+                    </Typography>
+                  </Box>
+                </Box>
+
+                {/* Floating Action Button */}
+                <Box sx={ContactFabSx}>
+                  <Box
+                    component="a"
+                    href="https://maps.google.com/?q=Veterinaria+Clínica+Modelo,+Av.+San+Martín+2055,+Resistencia"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    sx={ContactGoogleMapsButtonSx}
+                  >
+                    🗺️ Ver en Google Maps
+                  </Box>
+                </Box>
+              </Box>
+            </Box>
+          </Box>
+        </Box>
+        {/*----- End Veterinary Contact Section -----*/}
+        
       </Box>
     </>
   );
 }
-
 export default Home;

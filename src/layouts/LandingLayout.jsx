@@ -9,7 +9,7 @@ import Groups2OutlinedIcon from '@mui/icons-material/Groups2Outlined';
 function LandingLayout({ children }) {
 
   const navLinks = [
-    { title: "Inicio", path: "/", icon: <HomeOutlinedIcon /> },
+    { title: "Inicio", path: "/" , icon: <HomeOutlinedIcon /> },
     { title: "Servicios", path: "#servicios", icon: <PetsOutlinedIcon /> },
     { title: "Nosotros", path: "#equipo", icon: <Groups2OutlinedIcon /> },
     { title: "Contacto", path: "#contacto", icon: <CallOutlinedIcon /> },
