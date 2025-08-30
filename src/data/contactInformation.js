@@ -20,7 +20,7 @@ export const contactInformation = [
         delay: 0.4
     },
     {
-        title: "Email",
+        title: "Correo Electrónico",
         icon: EmailIcon,
         description: "nmaurenzig@yahoo.com.ar",
         color: "#3182ce",
@@ -36,8 +36,8 @@ export const contactInformation = [
     {
         title: "Redes sociales",
         icon: InstagramIcon,
-        description: "@clinicamodeloveterinaria",
-        color: "#d610f0ff",
-        delay: 0.8
+        description: "En Instagram: @clinicamodeloveterinaria",
+        color: "#d610f0",
+        delay: 0.6
     },
 ];

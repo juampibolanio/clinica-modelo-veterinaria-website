@@ -1,9 +1,9 @@
-/* ---- NavBar Styles Mejorados ----- */
+/* ---- NavBar Styles  ----- */
 
 /* ---- Main AppBar ---- */
 export const AppBarSx = (scrolled, theme) => ({
     background: scrolled 
-        ? `linear-gradient(135deg, ${theme.palette.background.paper}f5, ${theme.palette.background.paper}f8)`
+        ? `linear-gradient(135deg, ${theme.palette.primary.main}f0, ${theme.palette.secondary.main}e8)`
         : `linear-gradient(135deg, ${theme.palette.primary.main}f0, ${theme.palette.secondary.main}e8)`,
     backdropFilter: scrolled ? "blur(20px)" : "none",
     borderBottom: scrolled ? `1px solid ${theme.palette.primary.light}30` : "none",
@@ -73,7 +73,7 @@ export const TitleContainerSx = {
     display: "flex",
     flexDirection: "column",
     alignItems: "flex-start",
-    gap: 0,
+    gap: 1,
 };
 
 /* ---- Main Title ---- */
@@ -119,8 +119,6 @@ export const NavButtonSx = (theme) => ({
     py: 1.2,
     color: theme.palette.background.paper,
     borderRadius: 2,
-    transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
-    backdropFilter: "blur(10px)",
     minWidth: "auto",
     backgroundColor: "transparent",
     
@@ -163,12 +161,10 @@ export const NavButtonSx = (theme) => ({
         }
     },
     
-    // Active state
     "&:active": {
         transform: "translateY(0)",
     },
     
-    // Focus styles for accessibility
     "&:focus-visible": {
         outline: `2px solid ${theme.palette.primary.light}`,
         outlineOffset: 2,
@@ -222,7 +218,6 @@ export const DrawerPaperSx = (theme) => ({
         -4px 0 16px rgba(55, 129, 227, 0.2)
     `,
     
-    // Custom scrollbar
     "&::-webkit-scrollbar": {
         width: 6,
     },
