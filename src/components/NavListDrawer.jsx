@@ -1,23 +1,24 @@
-import { 
-    List, 
-    ListItem, 
-    ListItemButton, 
-    ListItemIcon, 
-    ListItemText, 
-    Box, 
-    Typography, 
+import {
+    List,
+    ListItem,
+    ListItemButton,
+    ListItemIcon,
+    ListItemText,
+    Box,
+    Typography,
     Divider,
     IconButton
 } from "@mui/material";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import { scrollToId } from "../utils/Home/scrollToId";
 import { useTheme } from "@mui/material/styles";
 import CloseIcon from "@mui/icons-material/Close";
-import icon from "../assets/favicon.png"; 
-import { 
-    MainContainerSx, 
+import icon from "../assets/favicon.png";
+import {
+    MainContainerSx,
     HeaderContainerSx,
     LogoContainerSx,
-    LogoSx, 
+    LogoSx,
     TitleContainerSx,
     TitleSx,
     SubtitleSx,
@@ -30,28 +31,38 @@ import {
     FooterContainerSx
 } from "../styles/NavBars/NavListDrawerSx";
 
-export default function NavListDrawer({ navLinks, handleDrawerOpen, onClose }) {
+export default function NavListDrawer({ navLinks, onClose }) {
+    const navigate = useNavigate();
     const theme = useTheme();
 
     // Handler click for Scroll with Smooth
-    const handleClick = (path, e) => {
-        if (path.startsWith("#")) {
+    const handleNavClick = (path, e) => {
+        const targetId =
+            (path === "/servicios" && "servicios") ||
+            (path === "/equipo" && "equipo") ||
+            (path === "/contacto" && "contacto") ||
+            (path === "/" && "inicio");
+
+        // If I'm already at Home
+        if (location.pathname === "/" && targetId) {
             e?.preventDefault();
-            const id = path.replace("#", "");
-            const section = document.getElementById(id);
-            if (section) {
-                const navHeight = 80;
-                const elementPosition = section.getBoundingClientRect().top + window.pageYOffset;
-                const offsetPosition = elementPosition - navHeight;
-                
-                window.scrollTo({
-                    top: offsetPosition,
-                    behavior: "smooth"
-                });
-            }
+            scrollToId(targetId, 80, "smooth");
+            onClose?.(); // cerrar el drawer
+            return;
         }
-        handleDrawerOpen(path, e); 
+
+        // If I'm on another page, I navigate to Home + hash
+        if (targetId) {
+            e?.preventDefault();
+            navigate("/#" + targetId);
+        } else {
+            // For normal routes like /blog
+            navigate(path);
+        }
+
+        onClose?.(); // close drawer
     };
+
 
     return (
         <Box sx={MainContainerSx}>
@@ -75,9 +86,9 @@ export default function NavListDrawer({ navLinks, handleDrawerOpen, onClose }) {
                         </Typography>
                     </Box>
                 </Box>
-                
-                <IconButton 
-                    onClick={onClose} 
+
+                <IconButton
+                    onClick={onClose}
                     sx={CloseButtonSx(theme)}
                     size="small"
                 >
@@ -96,7 +107,7 @@ export default function NavListDrawer({ navLinks, handleDrawerOpen, onClose }) {
                                 component={item.path.startsWith("#") ? "a" : NavLink}
                                 href={item.path.startsWith("#") ? item.path : undefined}
                                 to={!item.path.startsWith("#") ? item.path : undefined}
-                                onClick={(e) => handleClick(item.path, e)}
+                                onClick={(e) => handleNavClick(item.path, e)}
                                 sx={{
                                     ...ListItemButtonSx(theme),
                                     animationDelay: `${index * 0.1}s`,
@@ -109,8 +120,8 @@ export default function NavListDrawer({ navLinks, handleDrawerOpen, onClose }) {
                                         {item.icon}
                                     </ListItemIcon>
                                 )}
-                                <ListItemText 
-                                    primary={item.title} 
+                                <ListItemText
+                                    primary={item.title}
                                     primaryTypographyProps={{
                                         sx: ListItemTextSx(theme)
                                     }}
@@ -123,7 +134,7 @@ export default function NavListDrawer({ navLinks, handleDrawerOpen, onClose }) {
 
             {/* Footer */}
             <Box sx={FooterContainerSx(theme)}>
-                <Typography variant="caption" sx={{ 
+                <Typography variant="caption" sx={{
                     color: `${theme.palette.background.paper}80`,
                     textAlign: "center",
                     fontFamily: "Nunito, sans-serif"

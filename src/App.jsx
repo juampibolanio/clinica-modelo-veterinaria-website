@@ -11,6 +11,9 @@ function App() {
         <LandingLayout>
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/servicios" element={<Home />} />
+            <Route path="/equipo" element={<Home />} />
+            <Route path="/contacto" element={<Home />} />
             <Route path="/blog" element={<Blog />} />
           </Routes>
         </LandingLayout>

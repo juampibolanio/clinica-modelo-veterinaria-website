@@ -1,0 +1,64 @@
+{
+    "articles": [
+        {
+            "id": 1,
+            "title": "Cuidados esenciales para cachorros recién nacidos",
+            "excerpt": "Descubre los primeros pasos fundamentales para garantizar la salud y bienestar de los cachorros en sus primeras semanas de vida.",
+            "content": "Los primeros días de vida de un cachorro son cruciales para su desarrollo futuro. Durante las primeras 2-3 semanas, los cachorros dependen completamente de su madre para la alimentación, calor y estimulación. Es importante mantener un ambiente cálido y limpio, ya que los cachorros no pueden regular su temperatura corporal. La temperatura ideal debe estar entre 29-32°C durante la primera semana. La alimentación debe ser exclusivamente leche materna, rica en calostro que proporciona anticuerpos esenciales. Si la madre no está disponible, se debe consultar inmediatamente con un veterinario para obtener fórmulas de reemplazo adecuadas y técnicas de alimentación artificial.",
+            "category": "Cuidados",
+            "author": "Dr. María González",
+            "publishDate": "2024-08-25",
+            "readTime": "5 min",
+            "image": "https://images.unsplash.com/photo-1601758228041-f3b2795255f1?w=400&h=250&fit=crop",
+            "views": 1250,
+            "likes": 89,
+            "featured": true,
+            "tags": [
+                "cachorros",
+                "cuidados",
+                "neonatos",
+                "lactancia"
+            ]
+        },
+        {
+            "id": 2,
+            "title": "Vacunación en gatos: calendario completo 2024",
+            "excerpt": "Guía actualizada sobre el esquema de vacunación felina para mantener a tu gato protegido durante todo el año.",
+            "content": "La vacunación es una de las medidas preventivas más importantes para mantener la salud de los gatos. El calendario de vacunación felina incluye vacunas esenciales y no esenciales. Las vacunas esenciales protegen contra panleucopenia, rinotraqueítis viral, calicivirus y rabia. Se administran a las 6-8 semanas de edad con refuerzos cada 3-4 semanas hasta las 16 semanas. Las vacunas no esenciales incluyen FeLV (leucemia felina), FIV y Chlamydia, que se recomiendan según el estilo de vida del gato. Los gatos de interior tienen menor riesgo pero aún necesitan vacunas básicas. Es fundamental mantener registros actualizados y consultar anualmente con el veterinario para ajustar el programa según las necesidades individuales.",
+            "category": "Prevención",
+            "author": "Dr. Carlos Rodríguez",
+            "publishDate": "2024-08-20",
+            "readTime": "7 min",
+            "image": "https://images.unsplash.com/photo-1574231164645-d6f0e8553590?w=400&h=250&fit=crop",
+            "views": 980,
+            "likes": 67,
+            "featured": false,
+            "tags": [
+                "gatos",
+                "vacunas",
+                "prevención",
+                "salud felina"
+            ]
+        },
+        {
+            "id": 3,
+            "title": "Alimentación natural para perros: beneficios y recetas",
+            "excerpt": "Explora las ventajas de la dieta BARF y aprende recetas caseras nutritivas para tu mascota.",
+            "content": "La alimentación natural ha ganado popularidad entre propietarios conscientes de la nutrición canina. La dieta BARF (Biologically Appropriate Raw Food) se basa en alimentos crudos que imitan la dieta ancestral de los perros. Los beneficios incluyen mejor digestión, pelaje más brillante, dientes más limpios y mayor energía. Una dieta BARF típica contiene 70% carnes y órganos, 10% huesos carnosos, 7% vegetales, 7% frutas, 3% semillas y nueces, y 3% lácteos. Es crucial consultar con un veterinario antes de cambiar la dieta, especialmente para calcular las porciones correctas según edad, peso y nivel de actividad. La transición debe ser gradual, mezclando inicialmente alimentos nuevos con la dieta actual durante 7-10 días.",
+            "category": "Nutrición",
+            "author": "Dra. Ana Martínez",
+            "publishDate": "2024-08-15",
+            "readTime": "5 min",
+            "image": "https://images.unsplash.com/photo-1601758228041-f3b2795255f1?w=400&h=250&fit=crop",
+            "views": 1250,
+            "likes": 89,
+            "featured": true,
+            "tags": [
+                "cachorros",
+                "cuidados",
+                "neonatos",
+                "lactancia"
+            ]
+        }
+    ]
+}

@@ -27,7 +27,7 @@ export default function Hero() {
     };
 
     return (
-        <Box sx={BoxSx}>
+        <Box id="inicio" sx={BoxSx}>
             {/* Background Image */}
             <Box sx={ImageBackgroundSx} />
 
