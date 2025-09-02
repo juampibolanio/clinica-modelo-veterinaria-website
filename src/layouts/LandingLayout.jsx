@@ -10,9 +10,9 @@ function LandingLayout({ children }) {
 
   const navLinks = [
     { title: "Inicio", path: "/" , icon: <HomeOutlinedIcon /> },
-    { title: "Servicios", path: "#servicios", icon: <PetsOutlinedIcon /> },
-    { title: "Nosotros", path: "#equipo", icon: <Groups2OutlinedIcon /> },
-    { title: "Contacto", path: "#contacto", icon: <CallOutlinedIcon /> },
+    { title: "Servicios", path: "/servicios", icon: <PetsOutlinedIcon /> },
+    { title: "Equipo", path: "/equipo", icon: <Groups2OutlinedIcon /> },
+    { title: "Contacto", path: "/contacto", icon: <CallOutlinedIcon /> },
     { title: "Blog", path: "/blog", icon: <MenuBookOutlinedIcon /> },
   ]
 

@@ -1,3 +1,6 @@
+import marcelo_ocampo from '../assets/home/marcelo_ocampo.jpeg'
+import ileana_vallejos from '../assets/home/ileana_vallejos.jpeg'
+
 export const teamMembers = [
     {
         name: "Nelson ",
@@ -32,7 +35,7 @@ export const teamMembers = [
     {
         name: "Marcelo",
         surname: "Dr. Ocampo",
-        photo: "https://via.placeholder.com/150",
+        photo: marcelo_ocampo,
         title: "Médico Veterinario",
         specialty: "Clínica y Citología",
         license: "M.P N° 1221",
@@ -52,7 +55,7 @@ export const teamMembers = [
     {
         name: "Ileana",
         surname: "Dra. Vallejos",
-        photo: "https://via.placeholder.com/150",
+        photo: ileana_vallejos,
         title: "Médica Veterinaria",
         specialty: "Nutrición",
         license: "M.P N° 1298",

@@ -151,7 +151,6 @@ export const avatar = {
         right: "10%",
         bottom: "10%",
         borderRadius: "50%",
-        background: "radial-gradient(circle at 30% 30%, rgba(255,255,255,0.8), transparent 70%)",
         pointerEvents: "none",
     }
 };

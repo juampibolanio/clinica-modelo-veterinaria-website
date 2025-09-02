@@ -1,21 +1,22 @@
 import { AppBar, Box, Button, Drawer, IconButton, Toolbar, Typography, Container } from "@mui/material";
 import { useState, useEffect } from "react";
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { useTheme } from "@mui/material/styles";
+import { scrollToId } from "../utils/Home/scrollToId";
 import icon from "../assets/favicon.png";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 import NavListDrawer from "./NavListDrawer";
-import { 
-  AppBarSx, 
+import {
+  AppBarSx,
   ToolBarSx,
   LogoContainerSx,
-  LogoSx, 
+  LogoSx,
   TitleContainerSx,
-  Title1Sx, 
-  Title2Sx, 
+  Title1Sx,
+  Title2Sx,
   DesktopLinksContainerSx,
-  NavButtonSx, 
+  NavButtonSx,
   MobileBurguerMenuSx,
   DrawerPaperSx,
   BrandContainerSx
@@ -26,19 +27,20 @@ export default function NavBar({ navLinks }) {
   const [scrolled, setScrolled] = useState(false);
   const theme = useTheme();
   const location = useLocation();
+  const navigate = useNavigate();
 
-  // Handle scroll effect
+  // scroll effect
   useEffect(() => {
     const handleScroll = () => {
       const isScrolled = window.scrollY > 20;
       setScrolled(isScrolled);
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Close drawer on route change
+  // close drawer
   useEffect(() => {
     setDrawerOpen(false);
   }, [location]);
@@ -46,23 +48,21 @@ export default function NavBar({ navLinks }) {
   const handleDrawerToggle = () => setDrawerOpen(!drawerOpen);
   const handleDrawerClose = () => setDrawerOpen(false);
 
-  // Handler click for Scroll with Smooth
+  // click navegation
   const handleNavClick = (path, e) => {
-    if (path.startsWith("#")) {
-      e?.preventDefault();
-      const id = path.replace("#", "");
-      const section = document.getElementById(id);
-      if (section) {
-        const navHeight = 80;
-        const elementPosition = section.getBoundingClientRect().top + window.pageYOffset;
-        const offsetPosition = elementPosition - navHeight;
-        
-        window.scrollTo({
-          top: offsetPosition,
-          behavior: "smooth"
-        });
+    const targetId =
+      (path === "/servicios" && "servicios") ||
+      (path === "/equipo" && "equipo") ||
+      (path === "/contacto" && "contacto") ||
+      (path === "/" && "inicio");
+
+    if (location.pathname === path) {
+      if (targetId) {
+        e?.preventDefault();
+        scrollToId(targetId, 80, "smooth");
       }
-      setDrawerOpen(false);
+    } else {
+      navigate(path);
     }
   };
 
@@ -70,16 +70,11 @@ export default function NavBar({ navLinks }) {
     <AppBar position="sticky" sx={AppBarSx(scrolled, theme)} elevation={scrolled ? 4 : 0}>
       <Container maxWidth="xl">
         <Toolbar sx={ToolBarSx} disableGutters>
-          
-          {/* Brand Section */}
+
+          {/* Brand */}
           <Box sx={BrandContainerSx}>
             <Box sx={LogoContainerSx(theme)}>
-              <Box 
-                component="img" 
-                src={icon} 
-                alt="Clínica Modelo Veterinaria Logo" 
-                sx={LogoSx} 
-              />
+              <Box component="img" src={icon} alt="Clínica Modelo Veterinaria Logo" sx={LogoSx} />
             </Box>
             <Box sx={TitleContainerSx}>
               <Typography variant="h6" sx={Title1Sx(theme)}>
@@ -91,73 +86,51 @@ export default function NavBar({ navLinks }) {
             </Box>
           </Box>
 
-          {/* Desktop Navigation */}
+          {/* Desktop Links */}
           <Box sx={DesktopLinksContainerSx}>
-            {navLinks.map((link, index) => {
-              return link.path.startsWith("#") ? (
-                <Button
-                  key={link.title}
-                  component="a"
-                  href={link.path}
-                  startIcon={link.icon}
-                  disableElevation
-                  disableRipple
-                  sx={{
-                    ...NavButtonSx(theme),
-                    animationDelay: `${index * 0.1}s`
-                  }}
-                  onClick={(e) => handleNavClick(link.path, e)}
-                >
-                  {link.title}
-                </Button>
-              ) : (
-                <Button
-                  key={link.title}
-                  component={NavLink}
-                  to={link.path}
-                  startIcon={link.icon}
-                  disableElevation
-                  disableRipple
-                  sx={{
-                    ...NavButtonSx(theme),
-                    animationDelay: `${index * 0.1}s`
-                  }}
-                >
-                  {link.title}
-                </Button>
-              );
-            })}
+            {navLinks.map((link, index) => (
+              <Button
+                key={link.title}
+                startIcon={link.icon}
+                disableElevation
+                disableRipple
+                sx={{
+                  ...NavButtonSx(theme),
+                  animationDelay: `${index * 0.1}s`,
+                }}
+                onClick={(e) => handleNavClick(link.path, e)}
+              >
+                {link.title}
+              </Button>
+            ))}
           </Box>
 
-          {/* Mobile Menu Button */}
-          <IconButton 
-            size="large" 
-            onClick={handleDrawerToggle} 
+          {/* Mobile menu */}
+          <IconButton
+            size="large"
+            onClick={handleDrawerToggle}
             sx={MobileBurguerMenuSx(theme)}
             aria-label="toggle navigation menu"
           >
             {drawerOpen ? <CloseIcon /> : <MenuIcon />}
           </IconButton>
 
-          {/* Mobile Drawer */}
           <Drawer
             anchor="right"
             open={drawerOpen}
             onClose={handleDrawerClose}
-            PaperProps={{
-              sx: DrawerPaperSx(theme),
-            }}
+            PaperProps={{ sx: DrawerPaperSx(theme) }}
             ModalProps={{
               BackdropProps: {
                 sx: {
-                  backgroundColor: 'rgba(0, 0, 0, 0.7)',
-                  backdropFilter: 'blur(4px)',
-                }
-              }
+                  backgroundColor: "rgba(0, 0, 0, 0.7)",
+                  backdropFilter: "blur(4px)",
+                },
+              },
             }}
           >
-            <NavListDrawer 
-              navLinks={navLinks} 
+            <NavListDrawer
+              navLinks={navLinks}
               handleDrawerOpen={handleNavClick}
               onClose={handleDrawerClose}
             />
